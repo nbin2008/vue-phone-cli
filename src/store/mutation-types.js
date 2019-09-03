@@ -1,0 +1,2 @@
+export const ACCESS_TOKEN = 'ACCESS_TOKEN'
+export const USER_BASE_INFO = 'USER_BASE_INFO'
