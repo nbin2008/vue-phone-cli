@@ -8,7 +8,7 @@ import store from '@/store/'
 import './core/use'
 import './core/permission'
 import bootstrap from '@/core/bootstrap'
-import { VueAxios } from '@/utils/axios'
+import { VueAxios } from '@/utils/request'
 require('es6-promise').polyfill()
 
 FastClick.attach(document.body)

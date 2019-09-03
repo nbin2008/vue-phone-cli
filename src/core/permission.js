@@ -5,7 +5,6 @@ import { setDocumentTitle, domTitle } from '@/utils/domUtil'
 import { ACCESS_TOKEN } from '@/store/mutation-types'
 
 router.beforeEach((to, from, next) => {
-  console.log(to)
   to.meta && (typeof to.meta.title !== 'undefined' && setDocumentTitle(`${to.meta.title} - ${domTitle}`))
   if (Vue.ls.get(ACCESS_TOKEN)) {
     if (to.path === '/user/login') {

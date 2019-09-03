@@ -10,8 +10,6 @@ const service = axios.create({
   timeout: 10000 // 请求超时时间
 })
 
-console.log(service)
-
 const err = (error) => {
   if (error.response) {
     const data = error.response.data
