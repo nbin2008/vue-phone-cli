@@ -12,6 +12,11 @@
     <button @click="toSetToken">设置随机token</button>
     <hr/>
     <button @click="toGetData">ajax请求</button>
+    <hr/>
+    <p>测试h5样式</p>
+    <div class="d1">
+
+    </div>
   </div>
 </template>
 
@@ -53,6 +58,10 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style lang="less"  scoped>
+  .d1 {
+    width: 1rem;
+    height: 1rem;
+    background: red;
+  }
 </style>

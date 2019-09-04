@@ -1,12 +1,12 @@
 <template>
-  <div>
-    <router-view></router-view>
-  </div>
+    <div>
+      home/index
+    </div>
 </template>
 
 <script>
 export default {
-  name: 'BasicLayout'
+  name: 'homeIndex'
 }
 </script>
 

@@ -1,6 +1,18 @@
 import BasicLayout from '@/layouts/BasicLayout'
 
-export const syncRouterMap = []
+export const syncRouterMap = [
+  {
+    path: '/home',
+    component: BasicLayout,
+    children: [
+      {
+        path: '/home/homeIndex',
+        meta: { title: '首页' },
+        component: () => import('@/views/home/homeIndex')
+      }
+    ]
+  }
+]
 
 export const constantRouterMap = [
   {
@@ -12,7 +24,7 @@ export const constantRouterMap = [
       {
         path: '/index',
         name: 'index',
-        meta: { title: '首页', needLogin: true },
+        meta: { title: '首页' },
         component: () => import('@/views/Index')
       }
     ]
