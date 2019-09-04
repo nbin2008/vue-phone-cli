@@ -14,9 +14,10 @@
     <button @click="toGetData">ajax请求</button>
     <hr/>
     <p>测试h5样式</p>
-    <div class="d1">
-
-    </div>
+    <div class="d1"></div>
+    <hr/>
+    <p>测试公用组件</p>
+    <test-comment />
   </div>
 </template>
 
