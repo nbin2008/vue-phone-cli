@@ -1,8 +1,8 @@
 import Vue from 'vue'
-import testComment from './TestComment'
+import TestComment from './TestComment'
 
 const common = {
-  testComment
+  TestComment
 }
 
 Object.keys(common).forEach((key) => {
