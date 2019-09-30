@@ -1,4 +1,9 @@
 const api = {
-  login: '/login'
+  auth: {
+    register: '/auth/register'
+  },
+  addresses: {
+    list: '/addresses/list'
+  }
 }
 export default api

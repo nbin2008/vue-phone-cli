@@ -1,24 +1,53 @@
 import Vue from 'vue'
 import config from '@/config/defaultSettings'
-import { ACCESS_TOKEN, USER_BASE_INFO } from '@/store/mutation-types'
+import api from '@/api'
+import ajax from '@/utils/ajax'
+import {
+  ACCESS_TOKEN,
+  USER_BASE_INFO,
+  IS_LOGIN,
+  MOBILE,
+  VERIFIED,
+  ADMIN
+} from '@/store/mutation-types'
 
 const user = {
   state: {
     token: '',
-    name: '',
-    email: '',
-    phone: '',
-    avatar: ''
+    mobile: '',
+    isLogin: false,
+    isAdmin: false,
+    isVerified: false,
+    info: {
+      username: '',
+      company: '',
+      avatar: '',
+      id: ''
+    }
   },
   mutations: {
     SET_BASE_INFO: (state, baseInfo) => {
-      state.name !== undefined && (state.name = baseInfo.name)
-      state.email !== undefined && (state.email = baseInfo.email)
-      state.phone !== undefined && (state.phone = baseInfo.phone)
-      state.avatar !== undefined && (state.avatar = baseInfo.avatar)
+      if (baseInfo) {
+        baseInfo.username && (state.info.username = baseInfo.username)
+        baseInfo.company && (state.info.company = baseInfo.company)
+        baseInfo.avatar && (state.info.avatar = baseInfo.avatar)
+        baseInfo.id && (state.info.id = baseInfo.id)
+      }
+    }, // 待删除
+    SET_IS_LOGIN: (state, boolean) => {
+      state.isLogin = boolean
     },
     SET_TOKEN: (state, token) => {
       state.token = token
+    },
+    SET_MOBILE: (state, mobile) => {
+      state.mobile = mobile
+    },
+    SET_ADMIN: (state, boolean) => {
+      state.isAdmin = boolean
+    },
+    SET_VERIFIED: (state, boolean) => {
+      state.isVerified = boolean
     }
   },
   actions: {
@@ -26,12 +55,43 @@ const user = {
       commit('SET_BASE_INFO', baseInfo)
       Vue.ls.set(USER_BASE_INFO, baseInfo, config.expire)
     },
+    // 设置token
     setToken: ({commit}, token) => {
-      commit('SET_TOKEN', token)
       Vue.ls.set(ACCESS_TOKEN, token, config.expire)
+      commit('SET_TOKEN', token)
     },
-    Logout: ({commit}) => {
-      //
+    setMobile: ({ commit }, mobile) => {
+      Vue.ls.set(MOBILE, mobile)
+      commit('SET_MOBILE', mobile)
+    },
+    setAdmin: ({ commit }, boolean) => {
+      Vue.ls.set(ADMIN, boolean)
+      commit('SET_ADMIN', boolean)
+    },
+    setVerified: ({ commit }, boolean) => {
+      Vue.ls.set(VERIFIED, boolean)
+      commit('SET_VERIFIED', boolean)
+    },
+    // 设置是否登录，必须设置后才能跳转到登录页
+    setIsLogin: ({ state, commit, rootState, dispatch }, boolean) => {
+      Vue.ls.set(IS_LOGIN, boolean, config.expire)
+      commit('SET_IS_LOGIN', boolean)
+      dispatch('GenerateRoutes')
+    },
+    // 登出
+    logout ({ commit, state }) {
+      return new Promise((resolve) => {
+        ajax({
+          url: api.auth.logout,
+          type: 'post',
+          params: {}
+        }).then(res => {
+          if (res.code === 200) {
+            Vue.ls.clear()
+            resolve()
+          }
+        })
+      })
     }
   }
 }

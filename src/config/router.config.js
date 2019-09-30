@@ -2,33 +2,26 @@ import BasicLayout from '@/layouts/BasicLayout'
 
 export const syncRouterMap = [
   {
+    path: '/',
+    name: 'index',
+    component: BasicLayout,
+    meta: { title: '首页' },
+    redirect: '/home/index'
+  },
+  {
     path: '/home',
     component: BasicLayout,
     children: [
       {
-        path: '/home/homeIndex',
+        path: '/home/index',
         meta: { title: '首页' },
-        component: () => import('@/views/home/homeIndex')
+        component: () => import('@/views/home/index')
       }
     ]
   }
 ]
 
 export const constantRouterMap = [
-  {
-    path: '/',
-    name: '/',
-    component: BasicLayout,
-    redirect: '/index',
-    children: [
-      {
-        path: '/index',
-        name: 'index',
-        meta: { title: '首页' },
-        component: () => import('@/views/Index')
-      }
-    ]
-  },
   {
     path: '/user',
     name: '/user',
@@ -42,16 +35,6 @@ export const constantRouterMap = [
         component: () => import('@/views/user/Login')
       }
     ]
-  },
-  {
-    path: '*',
-    redirect: '/404'
-  },
-  {
-    path: '/404',
-    name: '404',
-    meta: { title: '404' },
-    component: () => import(/* webpackChunkName: "fail" */ '@/views/404')
   },
   {
     path: '/test',

@@ -12,6 +12,7 @@ export default {
 
 <style lang="less">
 @import '~vux/src/styles/reset.less';
+@import '~vux/src/styles/1px.less';
 @import "./assets/css/reset";
 @import "./assets/css/font-set";
 @import "./assets/css/global";

@@ -1,2 +1,7 @@
 export const ACCESS_TOKEN = 'ACCESS_TOKEN'
 export const USER_BASE_INFO = 'USER_BASE_INFO'
+export const IS_LOGIN = 'IS_LOGIN'
+export const ADD_ROUTERS = 'ADD_ROUTERS'
+export const MOBILE = 'MOBILE'
+export const VERIFIED = 'VERIFIED'
+export const ADMIN = 'ADMIN'
