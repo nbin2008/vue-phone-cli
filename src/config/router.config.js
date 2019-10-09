@@ -31,7 +31,7 @@ export const constantRouterMap = [
       {
         path: '/user/login',
         name: 'login',
-        meta: { title: '登录' },
+        meta: { title: '登录', guest: true },
         component: () => import('@/views/user/Login')
       }
     ]
@@ -44,7 +44,7 @@ export const constantRouterMap = [
       {
         path: '/test/test',
         name: 'Test',
-        meta: { title: '测试页' },
+        meta: { title: '测试页', guest: true },
         component: () => import('@/views/test/Test')
       }
     ]
